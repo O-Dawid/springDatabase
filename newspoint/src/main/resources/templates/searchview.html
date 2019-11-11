@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>News Point</title>
+</head>
+<body>
+	<form action="/upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="files" multiple="multiple">
+		<input type="submit" value="Upload CSV file or Show repo"></input>
+	</form>
+	
+		<h2>Results</h2>
+
+	<form action="/delete" method="post">
+	<table>
+  		<tr>
+		  	<th>Select</th>
+		    <th>First Name</th>
+		    <th>Last name</th>
+		    <th>Birth date</th>
+		    <th>Phone</th>
+		    <th>Age</th>
+  		</tr>
+	  <tr th:each= "searchedUser: ${searchedUsers}">
+		  	<td><input type="checkbox" th:name="checkboxName" th:value="${searchedUser.phoneNumber}"/></td>
+		    <td th:text="${searchedUser.firstName}"></td>
+		    <td th:text="${searchedUser.lastName}"></td>
+		    <td th:text="${searchedUser.birthDate}"></td>
+		    <td th:text="${searchedUser.phoneNumber}"></td>
+		    <td th:text="${searchedUser.age}"></td>
+	  </tr>
+	</table>
+    	<input type="submit" value="delete selected"></input>
+	</form>
+
+	<form action="/getuser">
+		<input type="text" name="lastname">
+		<input type="submit" value="Search user"></input>
+	</form>
+
+</body>
+</html>

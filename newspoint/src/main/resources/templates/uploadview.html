@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>News Point</title>
+</head>
+<body>
+	<form action="/upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="files" multiple="multiple">
+		<input type="submit" value="Upload CSV file or Show repo"></input>
+	</form>
+	
+	<form action="/getuser">
+		<input type="text" name="lastname">
+		<input type="submit" value="Search user"></input>
+	</form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>News Point</title>
+</head>
+<body>
+
+	<div>
+		<span><a href="/">Upload more or search</a></span>
+	</div>
+	
+	<div>
+		<p>Repo contains: <span th:text="${usersize}"></span> users</p>
+	</div>
+	
+	<div>
+		<div>
+			<p>The oldest user is: <span th:text="${oldest.firstName}"></span> <span th:text="${oldest.lastName}"></span> and has <span th:text="${oldest.age}"></span> years old.</p>
+		</div>
+	
+		<h2>REPO</h2>
+	
+		<form action="/delete" method="post">
+			<table>
+			  <tr>
+				  <th>Select</th>
+				  <th>First Name</th>
+				  <th>Last name</th>
+				  <th>Birth date</th>
+				  <th>Phone</th>
+				  <th>Age</th>
+			  </tr>
+			  <tr th:each= "user: ${users}">
+				  <td><input type="checkbox" th:name="checkboxName" th:value="${user.phoneNumber}"/></td>
+				  <td th:text="${user.firstName}"></td>
+				  <td th:text="${user.lastName}"></td>
+				  <td th:text="${user.birthDate}"></td>
+				  <td th:text="${user.phoneNumber}"></td>
+				  <td th:text="${user.age}"></td>
+			  </tr>
+			</table>
+	    	<input type="submit" value="delete selected"></input>
+		</form>
+		
+		<form action="/getuser">
+			<input type="text" name="lastname">
+			<input type="submit" value="Search user"></input>
+		</form>
+	</div>
+</body>
+</html>
